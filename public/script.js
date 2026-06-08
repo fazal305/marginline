@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://YOUR-RENDER-APP-NAME.onrender.com";
+
 const transactionForm = document.getElementById("transactionForm");
 const titleInput = document.getElementById("titleInput");
 const amountInput = document.getElementById("amountInput");
@@ -18,7 +20,7 @@ function formatMoney(amount) {
 /* Fetch transactions from MongoDB */
 async function fetchTransactions() {
   try {
-    const response = await fetch("/api/transactions");
+    const response = await fetch(`${API_BASE_URL}/api/transactions`);
     transactions = await response.json();
 
     renderTransactions();
@@ -42,7 +44,7 @@ async function addTransaction(event) {
   }
 
   try {
-    const response = await fetch("/api/transactions", {
+    const response = await fetch(`${API_BASE_URL}/api/transactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +69,7 @@ async function addTransaction(event) {
 /* Delete transaction from MongoDB */
 async function deleteTransaction(transactionId) {
   try {
-    const response = await fetch(`/api/transactions/${transactionId}`, {
+    const response = await fetch(`${API_BASE_URL}/api/transactions/${transactionId}`, {
       method: "DELETE",
     });
 
@@ -82,7 +84,7 @@ async function deleteTransaction(transactionId) {
   }
 }
 
-/* Update balance, income, and expense cards */
+/* Update summary cards */
 function updateSummaryCards() {
   const totalIncome = transactions
     .filter((transaction) => transaction.type === "income")
@@ -92,9 +94,7 @@ function updateSummaryCards() {
     .filter((transaction) => transaction.type === "expense")
     .reduce((total, transaction) => total + Number(transaction.amount), 0);
 
-  const totalBalance = totalIncome - totalExpenses;
-
-  balanceAmount.textContent = formatMoney(totalBalance);
+  balanceAmount.textContent = formatMoney(totalIncome - totalExpenses);
   incomeAmount.textContent = formatMoney(totalIncome);
   expenseAmount.textContent = formatMoney(totalExpenses);
 }
