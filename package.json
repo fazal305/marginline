@@ -1,0 +1,27 @@
+{
+  "name": "nexsoft-expense-tracker",
+  "version": "1.0.0",
+  "description": "A full-stack expense tracker application built with HTML, CSS, JavaScript, Node.js, Express, and MongoDB.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "expense-tracker",
+    "nodejs",
+    "express",
+    "mongodb",
+    "mongoose",
+    "vanilla-javascript",
+    "nexsoft"
+  ],
+  "author": "Fazal Abbas",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  }
+}
