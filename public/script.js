@@ -1,36 +1,71 @@
-const API_BASE_URL = "https://YOUR-RENDER-APP-NAME.onrender.com";
+const API_BASE_URL = getApiBaseUrl();
 
-const transactionForm = document.getElementById("transactionForm");
-const titleInput = document.getElementById("titleInput");
-const amountInput = document.getElementById("amountInput");
-const typeInput = document.getElementById("typeInput");
-const formMessage = document.getElementById("formMessage");
-const transactionList = document.getElementById("transactionList");
-const balanceAmount = document.getElementById("balanceAmount");
-const incomeAmount = document.getElementById("incomeAmount");
-const expenseAmount = document.getElementById("expenseAmount");
+const transactionForm = document.querySelector("#transactionForm");
+const titleInput = document.querySelector("#titleInput");
+const amountInput = document.querySelector("#amountInput");
+const typeInput = document.querySelector("#typeInput");
+const formMessage = document.querySelector("#formMessage");
+const transactionList = document.querySelector("#transactionList");
+const balanceAmount = document.querySelector("#balanceAmount");
+const incomeAmount = document.querySelector("#incomeAmount");
+const expenseAmount = document.querySelector("#expenseAmount");
+const refreshButton = document.querySelector("#refreshButton");
 
 let transactions = [];
 
-/* Format money for display */
-function formatMoney(amount) {
-  return `Rs. ${amount.toLocaleString()}`;
+function getApiBaseUrl() {
+  const hostname = window.location.hostname;
+
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+    return "http://localhost:5000";
+  }
+
+  if (hostname.includes("onrender.com")) {
+    return "";
+  }
+
+  return "https://nexsoft-expense-tracker.onrender.com";
 }
 
-/* Fetch transactions from MongoDB */
+function formatMoney(amount) {
+  return `Rs. ${Number(amount).toLocaleString("en-PK")}`;
+}
+
+function setMessage(message, type = "info") {
+  formMessage.textContent = message;
+  formMessage.className = `form-message ${type}`;
+}
+
+function setLoading(isLoading) {
+  const submitButton = transactionForm.querySelector(".submit-btn");
+
+  submitButton.disabled = isLoading;
+  submitButton.textContent = isLoading ? "Saving..." : "Add Transaction";
+}
+
 async function fetchTransactions() {
   try {
+    setMessage("Loading transactions...", "info");
+
     const response = await fetch(`${API_BASE_URL}/api/transactions`);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch transactions");
+    }
+
     transactions = await response.json();
 
     renderTransactions();
     updateSummaryCards();
-  } catch (error) {
-    formMessage.textContent = "Failed to load transactions.";
+    setMessage("", "info");
+  } catch {
+    transactions = [];
+    renderTransactions();
+    updateSummaryCards();
+    setMessage("Failed to load transactions. Check backend deployment or internet connection.", "error");
   }
 }
 
-/* Add transaction to MongoDB */
 async function addTransaction(event) {
   event.preventDefault();
 
@@ -39,52 +74,65 @@ async function addTransaction(event) {
   const type = typeInput.value;
 
   if (!title || amount <= 0 || !type) {
-    formMessage.textContent = "Please enter valid transaction details.";
+    setMessage("Please enter valid transaction details.", "error");
+    titleInput.focus();
     return;
   }
+
+  setLoading(true);
+  setMessage("Saving transaction...", "info");
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/transactions`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ title, amount, type }),
+      body: JSON.stringify({ title, amount, type })
     });
 
+    const result = await response.json();
+
     if (!response.ok) {
-      throw new Error("Failed to add transaction");
+      throw new Error(result.message || "Failed to add transaction");
     }
 
     transactionForm.reset();
     typeInput.value = "income";
-    formMessage.textContent = "Transaction added successfully.";
+    titleInput.focus();
+    setMessage("Transaction added successfully.", "success");
 
     await fetchTransactions();
   } catch (error) {
-    formMessage.textContent = "Could not add transaction.";
+    setMessage(error.message || "Could not add transaction.", "error");
+  } finally {
+    setLoading(false);
   }
 }
 
-/* Delete transaction from MongoDB */
 async function deleteTransaction(transactionId) {
+  const userConfirmed = confirm("Delete this transaction?");
+
+  if (!userConfirmed) {
+    return;
+  }
+
   try {
     const response = await fetch(`${API_BASE_URL}/api/transactions/${transactionId}`, {
-      method: "DELETE",
+      method: "DELETE"
     });
 
     if (!response.ok) {
       throw new Error("Failed to delete transaction");
     }
 
-    formMessage.textContent = "Transaction deleted successfully.";
+    setMessage("Transaction deleted successfully.", "success");
     await fetchTransactions();
-  } catch (error) {
-    formMessage.textContent = "Could not delete transaction.";
+  } catch {
+    setMessage("Could not delete transaction.", "error");
   }
 }
 
-/* Update summary cards */
 function updateSummaryCards() {
   const totalIncome = transactions
     .filter((transaction) => transaction.type === "income")
@@ -99,50 +147,63 @@ function updateSummaryCards() {
   expenseAmount.textContent = formatMoney(totalExpenses);
 }
 
-/* Render transaction history */
 function renderTransactions() {
   transactionList.innerHTML = "";
 
   if (transactions.length === 0) {
-    transactionList.innerHTML = `<p class="empty-message">No transactions yet.</p>`;
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "empty-message";
+    emptyMessage.textContent = "No transactions yet.";
+    transactionList.appendChild(emptyMessage);
     return;
   }
 
   transactions.forEach((transaction) => {
-    const transactionItem = document.createElement("article");
-    transactionItem.className = `transaction-item ${transaction.type}`;
-
-    const formattedDate = new Date(transaction.date).toLocaleDateString();
-
-    transactionItem.innerHTML = `
-      <div>
-        <p class="transaction-title">${transaction.title}</p>
-        <p class="transaction-meta">
-          ${transaction.type === "income" ? "Income" : "Expense"} • ${formattedDate}
-        </p>
-      </div>
-
-      <div class="transaction-actions">
-        <p class="transaction-amount ${transaction.type}">
-          ${transaction.type === "income" ? "+" : "-"} ${formatMoney(Number(transaction.amount))}
-        </p>
-
-        <button class="delete-btn" type="button" data-id="${transaction._id}">
-          Delete
-        </button>
-      </div>
-    `;
-
-    transactionList.appendChild(transactionItem);
-  });
-
-  document.querySelectorAll(".delete-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      deleteTransaction(button.dataset.id);
-    });
+    transactionList.appendChild(buildTransactionItem(transaction));
   });
 }
 
-/* Start app */
+function buildTransactionItem(transaction) {
+  const transactionItem = document.createElement("article");
+  transactionItem.className = `transaction-item ${transaction.type}`;
+
+  const transactionInfo = document.createElement("div");
+  const transactionTitle = document.createElement("p");
+  const transactionMeta = document.createElement("p");
+  const transactionActions = document.createElement("div");
+  const transactionAmount = document.createElement("p");
+  const deleteButton = document.createElement("button");
+
+  const formattedDate = new Date(transaction.date || transaction.createdAt).toLocaleDateString("en-PK", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+
+  transactionTitle.className = "transaction-title";
+  transactionTitle.textContent = transaction.title;
+
+  transactionMeta.className = "transaction-meta";
+  transactionMeta.textContent = `${transaction.type === "income" ? "Income" : "Expense"} • ${formattedDate}`;
+
+  transactionActions.className = "transaction-actions";
+
+  transactionAmount.className = `transaction-amount ${transaction.type}`;
+  transactionAmount.textContent = `${transaction.type === "income" ? "+" : "-"} ${formatMoney(Number(transaction.amount))}`;
+
+  deleteButton.className = "delete-btn";
+  deleteButton.type = "button";
+  deleteButton.textContent = "Delete";
+  deleteButton.setAttribute("aria-label", `Delete ${transaction.title}`);
+  deleteButton.addEventListener("click", () => deleteTransaction(transaction._id));
+
+  transactionInfo.append(transactionTitle, transactionMeta);
+  transactionActions.append(transactionAmount, deleteButton);
+  transactionItem.append(transactionInfo, transactionActions);
+
+  return transactionItem;
+}
+
 transactionForm.addEventListener("submit", addTransaction);
+refreshButton.addEventListener("click", fetchTransactions);
 fetchTransactions();

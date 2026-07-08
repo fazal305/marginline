@@ -4,7 +4,8 @@
   "description": "A full-stack expense tracker application built with HTML, CSS, JavaScript, Node.js, Express, and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "check": "node --check server.js"
   },
   "keywords": [
     "expense-tracker",
@@ -13,7 +14,8 @@
     "mongodb",
     "mongoose",
     "vanilla-javascript",
-    "nexsoft"
+    "nexsoft",
+    "fazal-labs"
   ],
   "author": "Fazal Abbas",
   "license": "MIT",
