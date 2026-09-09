@@ -1,0 +1,86 @@
+.ml-chart {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-5);
+}
+
+.ml-chart-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ml-bar-income {
+  fill: var(--ml-text-faint);
+  opacity: 0.55;
+}
+
+.ml-bar-fixed {
+  fill: var(--ml-negative);
+  opacity: 0.6;
+}
+
+.ml-bar-variable {
+  fill: var(--ml-warning);
+  opacity: 0.7;
+}
+
+.ml-chart-label {
+  font-size: 8px;
+  fill: var(--ml-text-faint);
+}
+
+.ml-margin-dot.tone-positive {
+  fill: var(--ml-positive);
+}
+
+.ml-margin-dot.tone-negative {
+  fill: var(--ml-negative);
+}
+
+.ml-margin-dot.tone-neutral {
+  fill: var(--ml-text-faint);
+}
+
+.ml-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ml-space-4);
+  margin-top: var(--ml-space-4);
+  font-size: 12px;
+  color: var(--ml-text-muted);
+}
+
+.ml-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ml-space-1);
+}
+
+.ml-legend-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.swatch-income {
+  background: var(--ml-text-faint);
+  opacity: 0.55;
+}
+
+.swatch-fixed {
+  background: var(--ml-negative);
+  opacity: 0.6;
+}
+
+.swatch-variable {
+  background: var(--ml-warning);
+  opacity: 0.7;
+}
+
+.swatch-margin {
+  background: var(--ml-positive);
+  border-radius: 50%;
+}

@@ -1,0 +1,20 @@
+.ml-empty-state {
+  max-width: 480px;
+}
+
+.ml-empty-state h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 var(--ml-space-2);
+  letter-spacing: -0.01em;
+}
+
+.ml-empty-state p {
+  color: var(--ml-text-muted);
+  margin: 0 0 var(--ml-space-2);
+}
+
+.ml-empty-note {
+  font-size: 12.5px;
+  color: var(--ml-text-faint) !important;
+}

@@ -1,29 +1,41 @@
 {
-  "name": "nexsoft-expense-tracker",
+  "name": "marginline",
   "version": "1.0.0",
-  "description": "A full-stack expense tracker application built with HTML, CSS, JavaScript, Node.js, Express, and MongoDB.",
-  "main": "server.js",
+  "description": "A personal cash-flow and financial margin management system.",
+  "main": "server/index.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "check": "node --check server.js"
+    "dev": "concurrently -k -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "vite",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "check": "node --check server/index.js",
+    "test": "node --test server/test/*.test.js"
   },
   "keywords": [
-    "expense-tracker",
+    "personal-finance",
+    "cash-flow",
+    "financial-margin",
     "nodejs",
     "express",
-    "mongodb",
-    "mongoose",
-    "vanilla-javascript",
-    "nexsoft",
+    "sqlite",
+    "react",
     "fazal-labs"
   ],
   "author": "Fazal Abbas",
   "license": "MIT",
-  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "mongoose": "^9.0.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^9.1.2",
+    "vite": "^8.2.2"
   }
 }

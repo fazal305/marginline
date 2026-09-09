@@ -1,0 +1,43 @@
+.ml-metric-card {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-4) var(--ml-space-5);
+}
+
+.ml-metric-label {
+  margin: 0 0 var(--ml-space-2);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ml-text-faint);
+}
+
+.ml-metric-value {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ml-metric-card.is-emphasized {
+  grid-column: span 2;
+  padding: var(--ml-space-5) var(--ml-space-6);
+}
+
+.ml-metric-card.is-emphasized .ml-metric-value {
+  font-size: 40px;
+}
+
+.ml-metric-card.tone-positive .ml-metric-value {
+  color: var(--ml-positive);
+}
+
+.ml-metric-card.tone-negative .ml-metric-value {
+  color: var(--ml-negative);
+}
+
+.ml-metric-card.tone-warning .ml-metric-value {
+  color: var(--ml-warning);
+}

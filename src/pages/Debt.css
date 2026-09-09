@@ -1,0 +1,108 @@
+.ml-debt-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ml-space-2);
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-4);
+  margin: var(--ml-space-5) 0;
+}
+
+.ml-debt-form input {
+  background: var(--ml-bg);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-sm);
+  padding: var(--ml-space-2) var(--ml-space-3);
+  color: var(--ml-text);
+  font-size: 13px;
+  flex: 1 1 140px;
+}
+
+.ml-debt-form button {
+  background: var(--ml-accent);
+  color: var(--ml-accent-contrast);
+  border: none;
+  border-radius: var(--ml-radius-sm);
+  padding: var(--ml-space-2) var(--ml-space-4);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.ml-debt-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-space-3);
+}
+
+.ml-debt-card {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-4) var(--ml-space-5);
+}
+
+.ml-debt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ml-space-3);
+}
+
+.ml-debt-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.ml-debt-card-header button {
+  background: none;
+  border: var(--ml-border-width) solid var(--ml-border-strong);
+  border-radius: var(--ml-radius-sm);
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--ml-text-muted);
+  cursor: pointer;
+}
+
+.ml-debt-card-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--ml-space-4);
+  margin-bottom: var(--ml-space-3);
+}
+
+.ml-debt-figure-label {
+  margin: 0 0 2px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ml-text-faint);
+}
+
+.ml-debt-figure-value {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.ml-debt-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ml-neutral-bg);
+  overflow: hidden;
+}
+
+.ml-debt-fill {
+  display: block;
+  height: 100%;
+  background: var(--ml-positive);
+  border-radius: 999px;
+}
+
+.ml-debt-note {
+  font-size: 12px;
+  color: var(--ml-text-faint);
+  max-width: 560px;
+  margin-top: var(--ml-space-4);
+}

@@ -1,0 +1,43 @@
+.ml-breakdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-space-3);
+}
+
+.ml-breakdown-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: var(--ml-space-3);
+  font-size: 13px;
+}
+
+.ml-breakdown-name {
+  color: var(--ml-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ml-breakdown-bar-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ml-neutral-bg);
+  overflow: hidden;
+}
+
+.ml-breakdown-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--ml-accent);
+  border-radius: 999px;
+}
+
+.ml-breakdown-value {
+  font-weight: 600;
+  min-width: 72px;
+  text-align: right;
+}

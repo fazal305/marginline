@@ -1,0 +1,29 @@
+.ml-loading-state {
+  display: flex;
+  align-items: center;
+  gap: var(--ml-space-2);
+  padding: var(--ml-space-6) 0;
+  color: var(--ml-text-faint);
+  font-size: 13.5px;
+}
+
+.ml-loading-spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--ml-border-strong);
+  border-top-color: var(--ml-accent);
+  animation: ml-spin 0.7s linear infinite;
+}
+
+@keyframes ml-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-loading-spinner {
+    animation: none;
+  }
+}

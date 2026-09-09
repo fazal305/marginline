@@ -1,0 +1,107 @@
+.ml-review-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-space-2);
+  margin-bottom: var(--ml-space-4);
+}
+
+.ml-review-row {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-3) var(--ml-space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--ml-space-5);
+}
+
+.ml-review-row-label {
+  font-weight: 600;
+  font-size: 13.5px;
+  min-width: 130px;
+}
+
+.ml-review-row-figures {
+  display: flex;
+  gap: var(--ml-space-6);
+  flex: 1;
+}
+
+.ml-review-figure-label {
+  margin: 0 0 2px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ml-text-faint);
+}
+
+.ml-review-figure-value {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.ml-margin-trend {
+  display: flex;
+  align-items: center;
+  gap: var(--ml-space-2);
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-3) var(--ml-space-5);
+  margin-bottom: var(--ml-space-6);
+  font-size: 13.5px;
+  color: var(--ml-text-muted);
+}
+
+.ml-margin-trend strong {
+  font-size: 15px;
+}
+
+.ml-margin-trend.tone-positive strong {
+  color: var(--ml-positive);
+}
+
+.ml-margin-trend.tone-warning strong {
+  color: var(--ml-warning);
+}
+
+.ml-margin-trend.tone-negative strong {
+  color: var(--ml-negative);
+}
+
+.ml-review-narrative {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--ml-space-5);
+}
+
+.ml-narrative-block {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-4) var(--ml-space-5);
+}
+
+.ml-narrative-block h3 {
+  margin: 0 0 var(--ml-space-2);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ml-text-faint);
+}
+
+.ml-narrative-block p {
+  margin: 0;
+  font-size: 13.5px;
+}
+
+.ml-narrative-block ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-space-1);
+}

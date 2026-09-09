@@ -1,0 +1,127 @@
+.ml-calendar-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--ml-space-6);
+  align-items: start;
+}
+
+.ml-calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ml-space-3);
+}
+
+.ml-calendar-nav h2 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.ml-calendar-nav button {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border-strong);
+  border-radius: var(--ml-radius-sm);
+  width: 28px;
+  height: 28px;
+  font-size: 15px;
+  color: var(--ml-text-muted);
+  cursor: pointer;
+}
+
+.ml-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.ml-calendar-weekday {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ml-text-faint);
+  text-align: center;
+  padding-bottom: var(--ml-space-2);
+}
+
+.ml-calendar-cell {
+  aspect-ratio: 1;
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-sm);
+  padding: 4px 6px;
+  font-size: 10.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--ml-surface);
+}
+
+.ml-calendar-cell.is-blank {
+  border-color: transparent;
+  background: none;
+}
+
+.ml-calendar-day {
+  color: var(--ml-text-faint);
+  font-weight: 600;
+}
+
+.ml-calendar-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+
+.ml-calendar-figures span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-positive {
+  color: var(--ml-positive);
+}
+
+.is-negative {
+  color: var(--ml-negative);
+}
+
+.ml-upcoming-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-space-2);
+}
+
+.ml-upcoming-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ml-space-3);
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-md);
+  padding: var(--ml-space-2) var(--ml-space-3);
+  font-size: 13px;
+}
+
+.ml-upcoming-desc {
+  margin: 0;
+  font-weight: 600;
+}
+
+.ml-upcoming-date {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--ml-text-faint);
+}
+
+@media (max-width: 800px) {
+  .ml-calendar-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,77 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexsoft Expense Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- App Layout -->
-  <main class="app-container">
-    <!-- Header -->
-    <header class="app-header">
-      <p class="eyebrow">Nexsoft Solutions Internship Project</p>
-      <h1>Expense Tracker</h1>
-      <p class="header-text">Add income and expense transactions with MongoDB storage.</p>
-    </header>
-
-    <!-- Dashboard Summary -->
-    <section class="summary-grid">
-      <article class="summary-card">
-        <p>Total Balance</p>
-        <h2 id="balanceAmount">Rs. 0</h2>
-      </article>
-
-      <article class="summary-card income-card">
-        <p>Total Income</p>
-        <h2 id="incomeAmount">Rs. 0</h2>
-      </article>
-
-      <article class="summary-card expense-card">
-        <p>Total Expenses</p>
-        <h2 id="expenseAmount">Rs. 0</h2>
-      </article>
-    </section>
-
-    <!-- Transaction Form -->
-    <section class="content-card">
-      <h2>Add Transaction</h2>
-
-      <form id="transactionForm" class="transaction-form">
-        <div class="form-group">
-          <label for="titleInput">Title</label>
-          <input type="text" id="titleInput" placeholder="Example: Salary or Groceries" required />
-        </div>
-
-        <div class="form-group">
-          <label for="amountInput">Amount</label>
-          <input type="number" id="amountInput" placeholder="Enter positive amount" min="1" required />
-        </div>
-
-        <div class="form-group">
-          <label for="typeInput">Type</label>
-          <select id="typeInput" required>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-          </select>
-        </div>
-
-        <button type="submit" class="submit-btn">Add Transaction</button>
-      </form>
-
-      <p id="formMessage" class="form-message"></p>
-    </section>
-
-    <!-- Transaction History -->
-    <section class="content-card">
-      <h2>Transaction History</h2>
-      <div id="transactionList" class="transaction-list">
-        <p class="empty-message">No transactions yet.</p>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marginline</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

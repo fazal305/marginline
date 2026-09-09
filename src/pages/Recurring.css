@@ -1,0 +1,103 @@
+.ml-recurring-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ml-space-2);
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-4);
+  margin-bottom: var(--ml-space-5);
+}
+
+.ml-recurring-form input,
+.ml-recurring-form select {
+  background: var(--ml-bg);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-sm);
+  padding: var(--ml-space-2) var(--ml-space-3);
+  color: var(--ml-text);
+  font-size: 13px;
+}
+
+.ml-recurring-form input[type="text"] {
+  flex: 1 1 200px;
+}
+
+.ml-recurring-form button {
+  background: var(--ml-accent);
+  color: var(--ml-accent-contrast);
+  border: none;
+  border-radius: var(--ml-radius-sm);
+  padding: var(--ml-space-2) var(--ml-space-4);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.ml-recurring-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ml-space-2);
+}
+
+.ml-recurring-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ml-space-4);
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-md);
+  padding: var(--ml-space-3) var(--ml-space-4);
+}
+
+.ml-recurring-item.is-paused {
+  opacity: 0.55;
+}
+
+.ml-recurring-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ml-recurring-desc {
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.ml-recurring-meta {
+  font-size: 12px;
+  color: var(--ml-text-faint);
+}
+
+.ml-recurring-amount {
+  margin-left: auto;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.ml-recurring-amount.is-positive {
+  color: var(--ml-positive);
+}
+
+.ml-recurring-amount.is-negative {
+  color: var(--ml-negative);
+}
+
+.ml-recurring-actions {
+  display: flex;
+  gap: var(--ml-space-2);
+}
+
+.ml-recurring-actions button {
+  background: none;
+  border: var(--ml-border-width) solid var(--ml-border-strong);
+  border-radius: var(--ml-radius-sm);
+  padding: 4px 10px;
+  font-size: 12.5px;
+  color: var(--ml-text-muted);
+  cursor: pointer;
+}

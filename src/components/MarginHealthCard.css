@@ -1,0 +1,48 @@
+.ml-margin-health-card {
+  display: block;
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-4) var(--ml-space-5);
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: var(--ml-space-5);
+}
+
+.ml-margin-health-card:hover {
+  border-color: var(--ml-border-strong);
+}
+
+.ml-margin-health-label {
+  margin: 0 0 2px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ml-text-faint);
+}
+
+.ml-margin-health-status {
+  margin: 0 0 var(--ml-space-2);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.tone-positive .ml-margin-health-status {
+  color: var(--ml-positive);
+}
+
+.tone-warning .ml-margin-health-status {
+  color: var(--ml-warning);
+}
+
+.tone-negative .ml-margin-health-status {
+  color: var(--ml-negative);
+}
+
+.ml-margin-health-reason {
+  margin: 0;
+  color: var(--ml-text-muted);
+  font-size: 13px;
+  max-width: 640px;
+}
