@@ -1,0 +1,10 @@
+.ml-offline-banner {
+  grid-column: 1 / -1;
+  background: var(--ml-negative-bg);
+  color: var(--ml-negative);
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: var(--ml-space-2) var(--ml-space-4);
+  border-bottom: var(--ml-border-width) solid var(--ml-border);
+}

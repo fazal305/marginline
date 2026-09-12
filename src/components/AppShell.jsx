@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { api } from "../api/client.js";
+import { setActiveCurrency } from "./MetricCard.jsx";
+import OfflineBanner from "./OfflineBanner.jsx";
 import "./AppShell.css";
 
 const NAV_SECTIONS = [
@@ -52,6 +54,10 @@ export default function AppShell({ children }) {
       .getDemoMode()
       .then((data) => setDemoMode(data.enabled))
       .catch(() => {});
+    api
+      .getSettings()
+      .then((data) => setActiveCurrency(data.currency))
+      .catch(() => {});
   }, []);
 
   return (
@@ -59,6 +65,7 @@ export default function AppShell({ children }) {
       <a className="ml-skip-link" href="#ml-main">
         Skip to main content
       </a>
+      <OfflineBanner />
       {demoMode ? (
         <div className="ml-demo-banner" role="status">
           DEMO MODE — all figures shown are fictional sample data, not real financial information.

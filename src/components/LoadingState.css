@@ -27,3 +27,8 @@
     animation: none;
   }
 }
+
+.ml-loading-slow {
+  color: var(--ml-text-faint);
+  font-style: italic;
+}
