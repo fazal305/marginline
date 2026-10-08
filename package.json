@@ -24,7 +24,7 @@
     "fazal-labs"
   ],
   "author": "Fazal Abbas",
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
