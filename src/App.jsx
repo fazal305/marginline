@@ -12,7 +12,7 @@ import Debt from "./pages/Debt.jsx";
 import Reports from "./pages/Reports.jsx";
 import MonthlyReview from "./pages/MonthlyReview.jsx";
 import ImportExport from "./pages/ImportExport.jsx";
-import { Settings } from "./pages/stubs.jsx";
+import Settings from "./pages/Settings.jsx";
 
 export default function App() {
   return (

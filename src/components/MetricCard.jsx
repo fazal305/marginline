@@ -1,6 +1,31 @@
 import "./MetricCard.css";
 
-export function formatCurrency(amountMinor, currency = "PKR") {
+const CURRENCY_STORAGE_KEY = "ml-currency";
+
+function readStoredCurrency() {
+  try {
+    return localStorage.getItem(CURRENCY_STORAGE_KEY) || "PKR";
+  } catch {
+    return "PKR";
+  }
+}
+
+let activeCurrency = readStoredCurrency();
+
+export function setActiveCurrency(currency) {
+  activeCurrency = currency;
+  try {
+    localStorage.setItem(CURRENCY_STORAGE_KEY, currency);
+  } catch {
+    // localStorage unavailable - setting just won't persist across reloads
+  }
+}
+
+export function getActiveCurrency() {
+  return activeCurrency;
+}
+
+export function formatCurrency(amountMinor, currency = activeCurrency) {
   const amount = amountMinor / 100;
   return new Intl.NumberFormat("en-PK", {
     style: "currency",

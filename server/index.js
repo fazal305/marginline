@@ -19,6 +19,7 @@ import emergencyFundRouter from "./routes/emergencyFund.js";
 import debtsRouter from "./routes/debts.js";
 import reportsRouter from "./routes/reports.js";
 import dataTransferRouter from "./routes/dataTransfer.js";
+import settingsRouter from "./routes/settings.js";
 import { seedDemoData } from "./demoSeed.js";
 
 dotenv.config();
@@ -83,6 +84,7 @@ app.use("/api/emergency-fund", emergencyFundRouter);
 app.use("/api/debts", debtsRouter);
 app.use("/api/reports", reportsRouter);
 app.use("/api", dataTransferRouter);
+app.use("/api/settings", settingsRouter);
 
 const distDir = path.join(__dirname, "..", "dist");
 app.use(express.static(distDir));

@@ -48,6 +48,7 @@ const NAV_SECTIONS = [
 
 export default function AppShell({ children }) {
   const [demoMode, setDemoMode] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     api
@@ -71,8 +72,28 @@ export default function AppShell({ children }) {
           DEMO MODE — all figures shown are fictional sample data, not real financial information.
         </div>
       ) : null}
-      <nav className="ml-nav" aria-label="Primary">
+      <div className="ml-topbar">
         <div className="ml-brand">
+          <span className="ml-brand-mark" aria-hidden="true" />
+          <span className="ml-brand-name">Marginline</span>
+        </div>
+        <button
+          type="button"
+          className="ml-nav-toggle"
+          aria-expanded={mobileNavOpen}
+          aria-controls="ml-primary-nav"
+          onClick={() => setMobileNavOpen((open) => !open)}
+        >
+          <span className="ml-nav-toggle-bars" aria-hidden="true" />
+          <span className="ml-visually-hidden">{mobileNavOpen ? "Close menu" : "Open menu"}</span>
+        </button>
+      </div>
+      <nav
+        id="ml-primary-nav"
+        className={"ml-nav" + (mobileNavOpen ? " is-open" : "")}
+        aria-label="Primary"
+      >
+        <div className="ml-brand ml-brand--desktop">
           <span className="ml-brand-mark" aria-hidden="true" />
           <span className="ml-brand-name">Marginline</span>
         </div>
@@ -85,6 +106,7 @@ export default function AppShell({ children }) {
                   <NavLink
                     to={item.to}
                     end={item.end}
+                    onClick={() => setMobileNavOpen(false)}
                     className={({ isActive }) => "ml-nav-link" + (isActive ? " is-active" : "")}
                   >
                     {item.label}

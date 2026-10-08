@@ -67,4 +67,24 @@ router.post("/import/commit", (req, res) => {
   }
 });
 
+router.delete("/data", (req, res) => {
+  try {
+    db.exec("BEGIN");
+    try {
+      db.exec("DELETE FROM transactions");
+      db.exec("DELETE FROM budgets");
+      db.exec("DELETE FROM recurring_templates");
+      db.exec("DELETE FROM debts");
+      db.prepare("UPDATE emergency_fund SET current_reserve_minor = 0 WHERE id = 1").run();
+      db.exec("COMMIT");
+    } catch (error) {
+      db.exec("ROLLBACK");
+      throw error;
+    }
+    res.json({ message: "All transaction data cleared" });
+  } catch {
+    res.status(500).json({ message: "Failed to clear data" });
+  }
+});
+
 export default router;

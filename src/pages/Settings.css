@@ -1,0 +1,109 @@
+.ml-settings-section {
+  background: var(--ml-surface);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-lg);
+  padding: var(--ml-space-5);
+  margin-bottom: var(--ml-space-5);
+}
+
+.ml-settings-radio-group {
+  display: flex;
+  gap: var(--ml-space-2);
+}
+
+.ml-theme-option {
+  display: flex;
+  align-items: center;
+  gap: var(--ml-space-2);
+  padding: var(--ml-space-2) var(--ml-space-4);
+  border: var(--ml-border-width) solid var(--ml-border-strong);
+  border-radius: var(--ml-radius-sm);
+  font-size: 13.5px;
+  color: var(--ml-text-muted);
+  cursor: pointer;
+}
+
+.ml-theme-option.is-active {
+  border-color: var(--ml-accent);
+  color: var(--ml-text);
+  background: var(--ml-neutral-bg);
+}
+
+.ml-settings-note {
+  font-size: 12.5px;
+  color: var(--ml-text-faint);
+  max-width: 560px;
+  margin: 0 0 var(--ml-space-3);
+}
+
+.ml-settings-row {
+  display: flex;
+  gap: var(--ml-space-2);
+}
+
+.ml-settings-row select,
+.ml-settings-row input {
+  background: var(--ml-bg);
+  border: var(--ml-border-width) solid var(--ml-border);
+  border-radius: var(--ml-radius-sm);
+  padding: var(--ml-space-2) var(--ml-space-3);
+  color: var(--ml-text);
+  font-size: 13.5px;
+  min-width: 220px;
+}
+
+.ml-settings-row button {
+  background: var(--ml-accent);
+  color: var(--ml-accent-contrast);
+  border: none;
+  border-radius: var(--ml-radius-sm);
+  padding: var(--ml-space-2) var(--ml-space-4);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.ml-settings-row button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.ml-settings-links {
+  display: flex;
+  gap: var(--ml-space-4);
+  margin-bottom: var(--ml-space-5);
+  font-size: 13.5px;
+}
+
+.ml-settings-links a {
+  color: var(--ml-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ml-settings-links a:hover {
+  text-decoration: underline;
+}
+
+.ml-settings-danger {
+  border-top: var(--ml-border-width) solid var(--ml-border);
+  padding-top: var(--ml-space-4);
+}
+
+.ml-settings-danger h3 {
+  margin: 0 0 var(--ml-space-2);
+  font-size: 13.5px;
+  color: var(--ml-negative);
+}
+
+.ml-settings-danger p {
+  font-size: 12.5px;
+  color: var(--ml-text-muted);
+  max-width: 560px;
+  margin: 0 0 var(--ml-space-3);
+}
+
+.ml-danger-button {
+  background: var(--ml-negative) !important;
+  color: #ffffff !important;
+}

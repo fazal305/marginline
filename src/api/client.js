@@ -53,5 +53,8 @@ export const api = {
   getForecast: (month) => request(`/api/reports/forecast?month=${month}`),
   previewImport: (csv) => request("/api/import/preview", { method: "POST", body: { csv } }),
   commitImport: (rows) => request("/api/import/commit", { method: "POST", body: { rows } }),
-  getDemoMode: () => request("/api/demo-mode")
+  getDemoMode: () => request("/api/demo-mode"),
+  getSettings: () => request("/api/settings"),
+  updateSettings: (payload) => request("/api/settings", { method: "PATCH", body: payload }),
+  clearAllData: () => request("/api/data", { method: "DELETE" })
 };

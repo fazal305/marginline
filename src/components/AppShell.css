@@ -31,6 +31,14 @@
   border-bottom: var(--ml-border-width) solid var(--ml-border);
 }
 
+.ml-topbar {
+  display: none;
+}
+
+.ml-nav-toggle {
+  display: none;
+}
+
 .ml-nav {
   border-right: var(--ml-border-width) solid var(--ml-border);
   background: var(--ml-surface);
@@ -112,35 +120,82 @@
     grid-template-columns: 1fr;
   }
 
-  .ml-nav {
-    border-right: none;
-    border-bottom: var(--ml-border-width) solid var(--ml-border);
+  .ml-topbar {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: var(--ml-space-1) var(--ml-space-2);
+    justify-content: space-between;
+    border-bottom: var(--ml-border-width) solid var(--ml-border);
+    background: var(--ml-surface);
     padding: var(--ml-space-3) var(--ml-space-4);
   }
 
-  .ml-brand {
-    margin-bottom: 0;
-    margin-right: var(--ml-space-4);
+  .ml-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--ml-radius-sm);
+    border: var(--ml-border-width) solid var(--ml-border);
+    background: var(--ml-neutral-bg);
+    color: var(--ml-text);
+    cursor: pointer;
   }
 
-  .ml-nav-section {
-    display: contents;
+  .ml-nav-toggle-bars,
+  .ml-nav-toggle-bars::before,
+  .ml-nav-toggle-bars::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
   }
 
-  .ml-nav-heading {
+  .ml-nav-toggle-bars {
+    position: relative;
+  }
+
+  .ml-nav-toggle-bars::before,
+  .ml-nav-toggle-bars::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .ml-nav-toggle-bars::before {
+    top: -6px;
+  }
+
+  .ml-nav-toggle-bars::after {
+    top: 6px;
+  }
+
+  .ml-brand--desktop {
     display: none;
   }
 
-  .ml-nav-section ul {
-    display: contents;
+  .ml-nav {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: var(--ml-space-1);
+    overflow-y: auto;
+    padding: var(--ml-space-5) var(--ml-space-4);
+    border-right: none;
   }
 
-  .ml-nav-section li {
-    display: contents;
+  .ml-nav.is-open {
+    display: flex;
+  }
+
+  .ml-nav-section {
+    margin-bottom: var(--ml-space-3);
   }
 
   .ml-main {

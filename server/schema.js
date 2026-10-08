@@ -108,11 +108,22 @@ export function initializeSchema(db, { seed = true } = {}) {
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
+
+    CREATE TABLE IF NOT EXISTS app_settings (
+      id INTEGER PRIMARY KEY CHECK (id = 1),
+      currency TEXT NOT NULL DEFAULT 'PKR',
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
   `);
 
   const emergencyFundRow = db.prepare("SELECT id FROM emergency_fund WHERE id = 1").get();
   if (!emergencyFundRow) {
     db.prepare("INSERT INTO emergency_fund (id, target_months, current_reserve_minor) VALUES (1, 3, 0)").run();
+  }
+
+  const appSettingsRow = db.prepare("SELECT id FROM app_settings WHERE id = 1").get();
+  if (!appSettingsRow) {
+    db.prepare("INSERT INTO app_settings (id, currency) VALUES (1, 'PKR')").run();
   }
 
   if (!seed) return;
